@@ -2,6 +2,9 @@ package com.blckroot;
 
 import picocli.CommandLine;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @CommandLine.Command(name = "blck")
 public class BlckCommand implements Runnable {
     @CommandLine.Parameters(index = "0", description = "Executable Name")
@@ -10,21 +13,21 @@ public class BlckCommand implements Runnable {
     @CommandLine.Spec
     CommandLine.Model.CommandSpec spec;
 
-    static void PrintStatus() {
-        String[] machineData = {
-                System.getProperty("user.name"),
-                System.getProperty("os.name"),
-                System.getProperty("os.version")
-        };
+    static HashMap<String, String> machineData = new HashMap<String, String>();
 
-        for (int i = 0; i < machineData.length; i++) {
-            System.out.printf("[%s]      |      %s",);
-        }
+    static void setMachineData() {
+        machineData.put("username", System.getProperty("user.name"));
+        machineData.put("operating system", System.getProperty("os.name"));
+        machineData.put("operating system version", System.getProperty("os.version"));
+    }
+    static void printMachineStatus() {
+        machineData.forEach((key, value) -> System.out.printf("[%s] | %s%n", key, value));
     }
 
     @Override
     public void run() {
-        System.out.println("Hello World!");
+        setMachineData();
+        printMachineStatus();
         System.exit(0);
     }
     public static void main(String[] args) {
