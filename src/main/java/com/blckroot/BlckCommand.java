@@ -13,15 +13,28 @@ public class BlckCommand implements Runnable {
     @CommandLine.Spec
     CommandLine.Model.CommandSpec spec;
 
-    static HashMap<String, String> machineData = new HashMap<String, String>();
+    static HashMap<String, String> machineData = new HashMap<>();
+
+    static Integer getLongestMachineDataKey() {
+        int longestLength = 0;
+        for (Map.Entry<String, String> set: machineData.entrySet()) {
+            System.out.printf("ELEMENT %s%n", set.getKey());
+            if (set.getKey().length() > longestLength)
+                longestLength = set.getKey().length();
+        }
+        return longestLength;
+    }
 
     static void setMachineData() {
         machineData.put("username", System.getProperty("user.name"));
         machineData.put("operating system", System.getProperty("os.name"));
         machineData.put("operating system version", System.getProperty("os.version"));
     }
+
     static void printMachineStatus() {
-        machineData.forEach((key, value) -> System.out.printf("[%s] | %s%n", key, value));
+        int justifyByLength = getLongestMachineDataKey();
+        System.out.println(justifyByLength);
+        machineData.forEach((key, value) -> System.out.printf("[ %-24S ] > %s%n", key, value));
     }
 
     @Override
