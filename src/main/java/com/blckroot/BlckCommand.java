@@ -56,13 +56,25 @@ public class BlckCommand implements Runnable {
 
                                 CommandSpec spec = subcommand.getCommandSpec();
                                 for (OptionSpec option : spec.options()) {
-                                    System.out.printf("%s='%s'%n", option.longestName(), option.getValue());
+                                    System.out.println("OPTION: " + option.toString());
+//                                    System.out.printf("%s='%s'%n", option.longestName(), option.getValue());
                                 }
                                 subcommand.usage(System.out);
                             }
                         }
                 )
-                        .addOption(OptionSpec.builder("runtime-option-a").build())
+                        .addOption(OptionSpec
+                                .builder("-t", "--test")
+                                .description("Testing 123 123")
+                                .build())
+                        .addOption(OptionSpec
+                                .builder("-v", "--verbose")
+                                .description("Print verbose")
+                                .build())
+                        .addOption(OptionSpec
+                                .builder("-h", "--help")
+                                .description("Print this help text")
+                                .build())
         );
 
         System.exit(new CommandLine(rootspec).execute(executableName));
