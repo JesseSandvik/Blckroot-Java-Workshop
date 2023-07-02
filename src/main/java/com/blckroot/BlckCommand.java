@@ -1,17 +1,16 @@
 package com.blckroot;
 
 import picocli.CommandLine;
+import picocli.CommandLine.*;
+import picocli.CommandLine.Model.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@CommandLine.Command(name = "blck")
+@Command(name = "blck")
 public class BlckCommand implements Runnable {
-    @CommandLine.Parameters(index = "0", description = "Executable Name")
+    @Parameters(index = "0", description = "Executable Name")
     static String executableName;
-
-    @CommandLine.Spec
-    CommandLine.Model.CommandSpec spec;
 
     static HashMap<String, String> machineData = new HashMap<>();
 
@@ -32,7 +31,7 @@ public class BlckCommand implements Runnable {
 
     static void printMachineStatus() {
         int justifyByLength = getLongestMachineDataKey();
-        machineData.forEach((key, value) -> System.out.printf("[ %-" + justifyByLength +"S ]\t%s%n", key, value));
+        machineData.forEach((key, value) -> System.out.printf("[INFO]\t%-" + justifyByLength + "S\t%s%n", key, value));
     }
 
     @Override
@@ -42,7 +41,30 @@ public class BlckCommand implements Runnable {
         System.exit(0);
     }
     public static void main(String[] args) {
-        int cmd = new CommandLine(new BlckCommand()).execute(args);
-        System.exit(cmd);
+        executableName = args[0];
+        final CommandSpec rootspec = CommandSpec.create();
+        rootspec.name("blck");
+
+        rootspec.addSubcommand(
+                executableName,
+                CommandSpec.wrapWithoutInspection(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                CommandLine subcommand = rootspec.subcommands().get(executableName);
+                                System.out.printf("Running %s...%n", executableName);
+
+                                CommandSpec spec = subcommand.getCommandSpec();
+                                for (OptionSpec option : spec.options()) {
+                                    System.out.printf("%s='%s'%n", option.longestName(), option.getValue());
+                                }
+                                subcommand.usage(System.out);
+                            }
+                        }
+                )
+                        .addOption(OptionSpec.builder("runtime-option-a").build())
+        );
+
+        System.exit(new CommandLine(rootspec).execute(executableName));
     }
 }
