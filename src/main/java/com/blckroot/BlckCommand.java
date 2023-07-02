@@ -18,7 +18,6 @@ public class BlckCommand implements Runnable {
     static Integer getLongestMachineDataKey() {
         int longestLength = 0;
         for (Map.Entry<String, String> set: machineData.entrySet()) {
-            System.out.printf("ELEMENT %s%n", set.getKey());
             if (set.getKey().length() > longestLength)
                 longestLength = set.getKey().length();
         }
@@ -33,8 +32,7 @@ public class BlckCommand implements Runnable {
 
     static void printMachineStatus() {
         int justifyByLength = getLongestMachineDataKey();
-        System.out.println(justifyByLength);
-        machineData.forEach((key, value) -> System.out.printf("[ %-24S ] > %s%n", key, value));
+        machineData.forEach((key, value) -> System.out.printf("[ %-" + justifyByLength +"S ]\t%s%n", key, value));
     }
 
     @Override
