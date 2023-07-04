@@ -47,26 +47,10 @@ public class BlckCommand implements Runnable {
 
         rootspec.addSubcommand(
                 executableName,
-                CommandSpec.wrapWithoutInspection(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                CommandLine subcommand = rootspec.subcommands().get(executableName);
-                                System.out.printf("Running %s...%n", executableName);
-
-                                CommandSpec spec = subcommand.getCommandSpec();
-                                for (OptionSpec option : spec.options()) {
-                                    System.out.println("OPTION: " + option.toString());
-//                                    System.out.printf("%s='%s'%n", option.longestName(), option.getValue());
-                                }
-                                subcommand.usage(System.out);
-                            }
-                        }
-                )
-                        .addOption(OptionSpec
-                                .builder("-t", "--test")
-                                .description("Testing 123 123")
-                                .build())
+                CommandSpec.wrapWithoutInspection((Runnable) () -> {
+                    CommandLine subcommand = rootspec.subcommands().get(executableName);
+                    subcommand.usage(System.out);
+                })
                         .addOption(OptionSpec
                                 .builder("-v", "--verbose")
                                 .description("Print verbose")
