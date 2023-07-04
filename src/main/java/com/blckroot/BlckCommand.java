@@ -1,19 +1,13 @@
 package com.blckroot;
 
 import picocli.CommandLine;
-import picocli.CommandLine.*;
 import picocli.CommandLine.Model.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-@Command(name = "blck")
-public class BlckCommand implements Runnable {
-    @Parameters(index = "0", description = "Executable Name")
-    static String executableName;
-
+public class BlckCommand {
+    static List<String> subcommand = new ArrayList<>();
     static HashMap<String, String> machineData = new HashMap<>();
-
     static Integer getLongestMachineDataKey() {
         int longestLength = 0;
         for (Map.Entry<String, String> set: machineData.entrySet()) {
@@ -22,34 +16,21 @@ public class BlckCommand implements Runnable {
         }
         return longestLength;
     }
-
-    static void setMachineData() {
-        machineData.put("username", System.getProperty("user.name"));
-        machineData.put("operating system", System.getProperty("os.name"));
-        machineData.put("operating system version", System.getProperty("os.version"));
-    }
-
-    static void printMachineStatus() {
-        int justifyByLength = getLongestMachineDataKey();
-        machineData.forEach((key, value) -> System.out.printf("[INFO]\t%-" + justifyByLength + "S\t%s%n", key, value));
-    }
-
-    @Override
-    public void run() {
-        setMachineData();
-        printMachineStatus();
-        System.exit(0);
-    }
     public static void main(String[] args) {
-        executableName = args[0];
         final CommandSpec rootspec = CommandSpec.create();
         rootspec.name("blck");
 
+        if (args.length < 1) {
+            System.exit(1);
+        }
+
+        Collections.addAll(subcommand, args);
+
         rootspec.addSubcommand(
-                executableName,
+                subcommand.get(0),
                 CommandSpec.wrapWithoutInspection((Runnable) () -> {
-                    CommandLine subcommand = rootspec.subcommands().get(executableName);
-                    subcommand.usage(System.out);
+                    CommandLine currentSubcommand = rootspec.subcommands().get(subcommand.get(0));
+                    currentSubcommand.usage(System.out);
                 })
                         .addOption(OptionSpec
                                 .builder("-v", "--verbose")
@@ -60,7 +41,17 @@ public class BlckCommand implements Runnable {
                                 .description("Print this help text")
                                 .build())
         );
-
-        System.exit(new CommandLine(rootspec).execute(executableName));
+        setMachineData();
+        printMachineStatus();
+        System.exit(new CommandLine(rootspec).execute(subcommand.get(0)));
+    }
+    static void setMachineData() {
+        machineData.put("username", System.getProperty("user.name"));
+        machineData.put("operating system", System.getProperty("os.name"));
+        machineData.put("operating system version", System.getProperty("os.version"));
+    }
+    static void printMachineStatus() {
+        int justifyByLength = getLongestMachineDataKey();
+        machineData.forEach((key, value) -> System.out.printf("[INFO]\t%-" + justifyByLength + "S\t%s%n", key, value));
     }
 }
