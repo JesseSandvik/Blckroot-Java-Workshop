@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/validator/FileSystemValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/validator/FileSystemValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +18,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="module-info" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -42,6 +43,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "JUnit.FileSystemExecutorTest.executor": "Run",
+    "JUnit.FileSystemValidatorTest.executor": "Run",
     "JUnit.LoggerTest.executor": "Run",
     "Maven.blckroot-sdk [verify].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -52,7 +54,7 @@
     "last_opened_file_path": "/Users/jsandvik/Projects/Blckroot-Java-Workshop"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.FileSystemExecutorTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.Main" />
       <module name="blckroot-sdk-filesystem" />
@@ -81,6 +83,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FileSystemValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blckroot-sdk-filesystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blckroot.sdk.filesystem.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blckroot.sdk.filesystem.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.validator.FileSystemValidatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoggerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blckroot-sdk-logger" />
       <extension name="coverage">
@@ -98,8 +115,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FileSystemExecutorTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.FileSystemValidatorTest" />
+        <item itemvalue="JUnit.FileSystemExecutorTest" />
         <item itemvalue="JUnit.LoggerTest" />
       </list>
     </recent_temporary>
