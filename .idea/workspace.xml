@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sdk/filesystem/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/logger/src/main/java/com/blckroot/sdk/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/logger/src/main/java/com/blckroot/sdk/logger/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/logger/src/test/java/com/blckroot/sdk/logger/LoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/logger/src/test/java/com/blckroot/sdk/logger/LoggerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="module-info" />
         <option value="Interface" />
         <option value="Class" />
@@ -45,11 +49,27 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/jsandvik/Projects/Blckroot-Java-Workshop"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.FileSystemExecutorTest">
+    <configuration name="FileSystemExecutorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blckroot-sdk-filesystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blckroot.sdk.filesystem.executor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blckroot.sdk.filesystem.executor" />
+      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.executor.FileSystemExecutorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoggerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blckroot-sdk-logger" />
       <extension name="coverage">
@@ -67,6 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileSystemExecutorTest" />
         <item itemvalue="JUnit.LoggerTest" />
       </list>
     </recent_temporary>

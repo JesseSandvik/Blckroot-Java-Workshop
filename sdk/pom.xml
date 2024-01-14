@@ -12,6 +12,7 @@
     <modules>
         <module>_aggregated-test-report</module>
         <module>logger</module>
+        <module>filesystem</module>
     </modules>
 
     <properties>
