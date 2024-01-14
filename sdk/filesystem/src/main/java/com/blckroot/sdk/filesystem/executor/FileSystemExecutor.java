@@ -25,7 +25,7 @@ public class FileSystemExecutor implements Executor {
     @Override
     public Integer executeCommand(List<String> command) {
         try {
-            LOGGER.log(Level.DEBUG, "executing command: " + command);
+            LOGGER.log(Level.TRACE, "executing command: " + command);
 
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command(command);
@@ -49,10 +49,11 @@ public class FileSystemExecutor implements Executor {
             LOGGER.log(Level.TRACE, "waiting for command execution process to terminate");
             process.waitFor();
             LOGGER.log(Level.TRACE, "command execution process terminated, returning exit code");
-            LOGGER.log(Level.DEBUG, "executed command: "  + command + " resulted in exit code: " + process.exitValue());
+            LOGGER.log(Level.TRACE, "executed command: "  + command + " resulted in exit code: " + process.exitValue());
             return process.exitValue();
 
         } catch (RuntimeException | InterruptedException | IOException e) {
+            LOGGER.log(Level.ERROR, "an exception occurred while executing command: " + command);
             LOGGER.log(Level.ERROR, e);
             throw new RuntimeException(e);
         }
