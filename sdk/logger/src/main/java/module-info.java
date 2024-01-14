@@ -6,4 +6,5 @@ module blckroot.sdk.logger {
             with com.blckroot.sdk.logger.LoggerFinder;
 
     exports com.blckroot.sdk.logger;
+    exports com.blckroot.sdk.logger.configurator;
 }
