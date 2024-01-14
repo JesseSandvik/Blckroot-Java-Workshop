@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/service/FileSystemService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/logger/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/logger/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     "last_opened_file_path": "/Users/jsandvik/Projects/Blckroot-Java-Workshop"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.FileSystemExecutorTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.Main" />
       <module name="blckroot-sdk-filesystem" />
@@ -100,8 +98,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.FileSystemExecutorTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.LoggerTest" />
       </list>
     </recent_temporary>
