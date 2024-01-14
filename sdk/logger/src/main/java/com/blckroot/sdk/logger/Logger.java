@@ -27,6 +27,11 @@ public class Logger implements System.Logger {
             case INFO -> logger.isInfoEnabled();
             case WARNING -> logger.isWarnEnabled();
             case ERROR -> logger.isErrorEnabled();
+            case OFF -> !logger.isTraceEnabled() &&
+                    !logger.isDebugEnabled() &&
+                    !logger.isInfoEnabled() &&
+                    !logger.isWarnEnabled() &&
+                    !logger.isErrorEnabled();
             case ALL -> logger.isTraceEnabled() &&
                     logger.isDebugEnabled() &&
                     logger.isInfoEnabled() &&
