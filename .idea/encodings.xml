@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/sdk/_aggregated-test-report/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sdk/_aggregated-test-report/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sdk/command/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sdk/command/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sdk/contracts/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sdk/contracts/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sdk/filesystem/src/main/java" charset="UTF-8" />

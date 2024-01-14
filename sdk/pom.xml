@@ -11,8 +11,9 @@
 
     <modules>
         <module>_aggregated-test-report</module>
-        <module>logger</module>
         <module>filesystem</module>
+        <module>logger</module>
+        <module>command</module>
     </modules>
 
     <properties>

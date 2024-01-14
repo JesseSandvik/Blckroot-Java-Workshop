@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>blckroot_sdk_aggregated_test_report</artifactId>
+    <artifactId>blckroot-sdk-aggregated-test-report</artifactId>
 
     <build>
         <plugins>
@@ -40,12 +40,12 @@
     <dependencies>
         <dependency>
             <groupId>com.blckroot.sdk</groupId>
-            <artifactId>blckroot-sdk-logger</artifactId>
+            <artifactId>blckroot-sdk-filesystem</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.blckroot.sdk</groupId>
-            <artifactId>blckroot-sdk-filesystem</artifactId>
+            <artifactId>blckroot-sdk-logger</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

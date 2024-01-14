@@ -17,9 +17,9 @@ public class FileSystemExecutor implements Executor {
 
     @Override
     public void setPrintStream(PrintStream printStream) {
-        LOGGER.log(Level.TRACE, "original print stream: " + getPrintStream());
+        LOGGER.log(Level.TRACE, "original file system executor print stream: " + getPrintStream());
         this.printStream = printStream;
-        LOGGER.log(Level.TRACE, "updated print stream: " + printStream);
+        LOGGER.log(Level.TRACE, "updated file system executor print stream: " + printStream);
     }
 
     @Override
@@ -30,19 +30,19 @@ public class FileSystemExecutor implements Executor {
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command(command);
 
-            LOGGER.log(Level.TRACE, "initializing command process");
+            LOGGER.log(Level.TRACE, "initializing command execution process");
             Process process = processBuilder.start();
 
-            LOGGER.log(Level.TRACE, "extracting input stream from process");
+            LOGGER.log(Level.TRACE, "extracting input stream from command execution process");
             InputStream inputStream = process.getInputStream();
 
-            LOGGER.log(Level.TRACE, "reading input stream from process");
+            LOGGER.log(Level.TRACE, "reading input stream from command execution process");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line;
-            LOGGER.log(Level.TRACE, "preparing to print input stream to print stream");
+            LOGGER.log(Level.TRACE, "preparing to print input stream from command execution to print stream");
             while ((line = bufferedReader.readLine()) != null) {
-                LOGGER.log(Level.TRACE, "printing input stream line to print stream");
+                LOGGER.log(Level.TRACE, "printing input stream line from command execution to print stream");
                 printStream.println(line);
             }
 

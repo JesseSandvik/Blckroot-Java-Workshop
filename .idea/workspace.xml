@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sdk/command/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/validator/FileSystemValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/validator/FileSystemValidatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/test/java/com/blckroot/sdk/filesystem/service/FileSystemServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,14 @@
     "JUnit.FileSystemExecutorTest.executor": "Run",
     "JUnit.FileSystemValidatorTest.executor": "Run",
     "JUnit.LoggerTest.executor": "Run",
+    "Maven.blckroot-sdk [clean].executor": "Run",
     "Maven.blckroot-sdk [verify].executor": "Run",
+    "Maven.blckroot-sdk-filesystem [clean].executor": "Run",
+    "Maven.blckroot-sdk-filesystem [package].executor": "Run",
+    "Maven.blckroot-sdk-filesystem [verify].executor": "Run",
+    "Maven.blckroot-sdk-logger [clean].executor": "Run",
+    "Maven.blckroot-sdk-logger [install].executor": "Run",
+    "Maven.blckroot-sdk-logger [verify].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
