@@ -11,13 +11,13 @@ import static java.lang.System.Logger.Level;
 
 public class ExecutorCommand extends Command {
     private final static Logger LOGGER = System.getLogger(ExecutorCommand.class.getName());
-    private final String EXECUTABLE_FILE_PATH_PROPERTY_KEY = "executable.file.path";
 
     @Override
     public Integer call() {
         LOGGER.log(Level.TRACE, "executing call for executor command");
         Properties properties = this.getProperties();
 
+        final String EXECUTABLE_FILE_PATH_PROPERTY_KEY = "executable.file.path";
         String executableFilePath = properties.getProperty(EXECUTABLE_FILE_PATH_PROPERTY_KEY);
         LOGGER.log(Level.TRACE, "executable.file.path property value: " + executableFilePath);
 

@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/_aggregated-test-report/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/ExecutorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/ExecutorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/com/blckroot/sdk/filesystem/executor/FileSystemExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/filesystem/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/filesystem/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="module-info" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -47,8 +43,10 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "Application.com.blckroot.sdk.Main.executor": "Run",
+    "JUnit.CommandFactoryTest.executor": "Run",
     "JUnit.ExecutorCommandTest.executor": "Run",
     "JUnit.FileSystemExecutorTest.executor": "Run",
+    "JUnit.FileSystemServiceTest.executor": "Run",
     "JUnit.FileSystemValidatorTest.executor": "Run",
     "JUnit.LoggerTest.executor": "Run",
     "Maven.blckroot-sdk [clean].executor": "Run",
@@ -72,7 +70,7 @@
       <recent name="$PROJECT_DIR$/sdk/command/src/test/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExecutorCommandTest">
+  <component name="RunManager" selected="JUnit.FileSystemServiceTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.Main" />
       <module name="blckroot-sdk-filesystem" />
@@ -99,6 +97,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CommandFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="command" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blckroot.sdk.command.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blckroot.sdk.command" />
+      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.command.CommandFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ExecutorCommandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="command" />
       <extension name="coverage">
@@ -114,31 +127,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileSystemExecutorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileSystemServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blckroot-sdk-filesystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.blckroot.sdk.filesystem.executor.*" />
+          <option name="PATTERN" value="com.blckroot.sdk.filesystem.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.blckroot.sdk.filesystem.executor" />
-      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.executor.FileSystemExecutorTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileSystemValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="blckroot-sdk-filesystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blckroot.sdk.filesystem.validator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blckroot.sdk.filesystem.validator" />
-      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.validator.FileSystemValidatorTest" />
+      <option name="PACKAGE_NAME" value="com.blckroot.sdk.filesystem.service" />
+      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.filesystem.service.FileSystemServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileSystemServiceTest" />
+        <item itemvalue="JUnit.CommandFactoryTest" />
         <item itemvalue="JUnit.ExecutorCommandTest" />
         <item itemvalue="Application.com.blckroot.sdk.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.FileSystemValidatorTest" />
-        <item itemvalue="JUnit.FileSystemExecutorTest" />
       </list>
     </recent_temporary>
   </component>
