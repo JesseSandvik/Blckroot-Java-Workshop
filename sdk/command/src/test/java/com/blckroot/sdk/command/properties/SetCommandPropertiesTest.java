@@ -60,4 +60,31 @@ public class SetCommandPropertiesTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__positional_parameter__count() {
+        int expected = Integer.parseInt(commandProperties.getProperty("positional.parameter.count"));
+        SetCommandProperties.setProperties(command);
+        int actual = command.getPositionalParameters().size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__positional_parameter__label() {
+        String expected = commandProperties.getProperty("1.positional.parameter.label");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getPositionalParameters().get(0).getLabel();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__positional_parameter__synopsis() {
+        String expected = commandProperties.getProperty("1.positional.parameter.synopsis");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getPositionalParameters().get(0).getSynopsis();
+
+        assertEquals(expected, actual);
+    }
 }
