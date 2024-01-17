@@ -87,4 +87,49 @@ public class SetCommandPropertiesTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__option__count() {
+        int expected = Integer.parseInt(commandProperties.getProperty("option.count"));
+        SetCommandProperties.setProperties(command);
+        int actual = command.getOptions().size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__option__long_name() {
+        String expected = commandProperties.getProperty("1.option.long.name");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getOptions().get(0).getLongName();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__option__short_name() {
+        String expected = commandProperties.getProperty("1.option.short.name");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getOptions().get(0).getShortName();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__option__synopsis() {
+        String expected = commandProperties.getProperty("1.option.synopsis");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getOptions().get(0).getSynopsis();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void SET_COMMAND_PROPERTIES__option__parameter_label() {
+        String expected = commandProperties.getProperty("1.option.label");
+        SetCommandProperties.setProperties(command);
+        String actual = command.getOptions().get(0).getParameterLabel();
+
+        assertEquals(expected, actual);
+    }
 }
