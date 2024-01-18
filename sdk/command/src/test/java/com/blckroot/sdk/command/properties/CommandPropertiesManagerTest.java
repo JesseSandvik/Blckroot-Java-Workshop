@@ -21,6 +21,8 @@ public class CommandPropertiesManagerTest {
         commandProperties = fileSystemService.getPropertiesFromFile(COMMAND_PROPERTIES_FILE_PATH);
     }
 
+    // === PROPERTIES SET FROM FILE =========
+
     @Test
     void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__version() {
         String expected = commandProperties.getProperty("version");
@@ -136,6 +138,62 @@ public class CommandPropertiesManagerTest {
         String actual = command.getProperties().getProperty("subcommands");
 
         assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    // === ATTRIBUTES FROM PROPERTIES =========
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__version() {
+        String expected = "1.2.3";
+        Properties properties = new Properties();
+        properties.setProperty("version", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setAttributesFromProperties(command);
+        String actual = command.getVersion();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__synopsis() {
+        String expected = "Brief synopsis for command";
+        Properties properties = new Properties();
+        properties.setProperty("synopsis", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setAttributesFromProperties(command);
+        String actual = command.getSynopsis();
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__description() {
+        String expected = "A detailed description for command with usage examples.";
+        Properties properties = new Properties();
+        properties.setProperty("description", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setAttributesFromProperties(command);
+        String actual = command.getDescription();
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__execute_without_arguments() {
+        boolean expected = true;
+        Properties properties = new Properties();
+        properties.setProperty("execute.without.arguments", String.valueOf(expected));
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setAttributesFromProperties(command);
+        boolean actual = command.getExecutesWithoutArguments();
+
         assertEquals(expected, actual);
     }
 }

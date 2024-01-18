@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,7 @@
     "Application.Main.executor": "Run",
     "Application.com.blckroot.sdk.Main.executor": "Run",
     "JUnit.CommandFactoryTest.executor": "Run",
+    "JUnit.CommandPropertiesManagerTest.COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__version.executor": "Run",
     "JUnit.CommandPropertiesManagerTest.executor": "Run",
     "JUnit.ExecutorCommandTest.executor": "Run",
     "JUnit.FileSystemExecutorTest.executor": "Run",
@@ -79,21 +78,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.CommandPropertiesManagerTest">
-    <configuration name="CommandFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="command" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blckroot.sdk.command.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blckroot.sdk.command" />
-      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.command.CommandFactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CommandPropertiesManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="command" />
       <extension name="coverage">
@@ -105,6 +89,22 @@
       <option name="PACKAGE_NAME" value="com.blckroot.sdk.command.properties" />
       <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.command.properties.CommandPropertiesManagerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommandPropertiesManagerTest.COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__version" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="command" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blckroot.sdk.command.properties.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blckroot.sdk.command.properties" />
+      <option name="MAIN_CLASS_NAME" value="com.blckroot.sdk.command.properties.CommandPropertiesManagerTest" />
+      <option name="METHOD_NAME" value="COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__version" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,10 +158,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CommandPropertiesManagerTest" />
+        <item itemvalue="JUnit.CommandPropertiesManagerTest.COMMAND_PROPERTIES_MANAGER__set_attributes_from_properties__version" />
         <item itemvalue="JUnit.SetCommandPropertiesTest" />
         <item itemvalue="JUnit.SetCommandPropertiesTest.SET_COMMAND_PROPERTIES__option__label" />
         <item itemvalue="JUnit.FileSystemServiceTest" />
-        <item itemvalue="JUnit.CommandFactoryTest" />
       </list>
     </recent_temporary>
   </component>
