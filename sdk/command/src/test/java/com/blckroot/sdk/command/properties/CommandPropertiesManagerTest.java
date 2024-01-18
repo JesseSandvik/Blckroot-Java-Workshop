@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CommandPropertiesManagerTest {
     private final String COMMAND_PROPERTIES_FILE_PATH = "src/test/resources/etc/echo.properties";
@@ -20,12 +20,14 @@ public class CommandPropertiesManagerTest {
         FileSystemService fileSystemService = new FileSystemService();
         commandProperties = fileSystemService.getPropertiesFromFile(COMMAND_PROPERTIES_FILE_PATH);
     }
+
     @Test
     void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__version() {
         String expected = commandProperties.getProperty("version");
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
         String actual = command.getProperties().getProperty("version");
 
+        assertNotNull(expected);
         assertEquals(expected, actual);
     }
 
@@ -35,6 +37,7 @@ public class CommandPropertiesManagerTest {
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
         String actual = command.getProperties().getProperty("synopsis");
 
+        assertNotNull(expected);
         assertEquals(expected, actual);
     }
 
@@ -44,6 +47,7 @@ public class CommandPropertiesManagerTest {
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
         String actual = command.getProperties().getProperty("description");
 
+        assertNotNull(expected);
         assertEquals(expected, actual);
     }
 
@@ -71,6 +75,7 @@ public class CommandPropertiesManagerTest {
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
         String actual = command.getProperties().getProperty("1.positional.parameter.label");
 
+        assertNotNull(expected);
         assertEquals(expected, actual);
     }
 
@@ -80,6 +85,57 @@ public class CommandPropertiesManagerTest {
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
         String actual = command.getProperties().getProperty("1.positional.parameter.synopsis");
 
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__option_long_name() {
+        String expected = commandProperties.getProperty("1.option.long.name");
+        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
+        String actual = command.getProperties().getProperty("1.option.long.name");
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__option_short_name() {
+        String expected = commandProperties.getProperty("1.option.short.name");
+        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
+        String actual = command.getProperties().getProperty("1.option.short.name");
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__option_parameter_label() {
+        String expected = commandProperties.getProperty("1.option.parameter.label");
+        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
+        String actual = command.getProperties().getProperty("1.option.parameter.label");
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__option_synopsis() {
+        String expected = commandProperties.getProperty("1.option.synopsis");
+        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
+        String actual = command.getProperties().getProperty("1.option.synopsis");
+
+        assertNotNull(expected);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__subcommands() {
+        String expected = commandProperties.getProperty("subcommands");
+        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
+        String actual = command.getProperties().getProperty("subcommands");
+
+        assertNotNull(expected);
         assertEquals(expected, actual);
     }
 }

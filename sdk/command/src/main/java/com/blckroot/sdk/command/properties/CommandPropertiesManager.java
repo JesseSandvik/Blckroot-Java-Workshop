@@ -77,7 +77,7 @@ public class CommandPropertiesManager {
             final String OPTION_LONG_NAME_PROPERTY_KEY="option.long.name";
             final String OPTION_SHORT_NAME_PROPERTY_KEY="option.short.name";
             final String OPTION_SYNOPSIS_PROPERTY_KEY="option.synopsis";
-            final String OPTION_LABEL_PROPERTY_KEY="option.label";
+            final String OPTION_LABEL_PROPERTY_KEY="option.parameter.label";
 
             for (int i = 1; i <= optionCount; i+=1) {
                 Option option = new Option();

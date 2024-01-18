@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/SetCommandProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/SetCommandPropertiesState.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/SetCommandPropertiesState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/SetCommandPropertiesTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
