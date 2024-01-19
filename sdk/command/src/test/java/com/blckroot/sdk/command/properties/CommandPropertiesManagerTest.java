@@ -196,4 +196,47 @@ public class CommandPropertiesManagerTest {
 
         assertEquals(expected, actual);
     }
+
+    // === POSITIONAL PARAMETERS FROM PROPERTIES =========
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_positional_parameters_from_properties__count() {
+        int expected = 2;
+        Properties properties = new Properties();
+        properties.setProperty("positional.parameter.count", String.valueOf(expected));
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setPositionalParametersFromProperties(command);
+        int actual = command.getPositionalParameters().size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_positional_parameters_from_properties__label() {
+        String expected = "text";
+        Properties properties = new Properties();
+        properties.setProperty("positional.parameter.count", String.valueOf(1));
+        properties.setProperty("1.positional.parameter.label", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setPositionalParametersFromProperties(command);
+        String actual = command.getPositionalParameters().get(0).getLabel();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_positional_parameters_from_properties__synopsis() {
+        String expected = "The text to output to the console";
+        Properties properties = new Properties();
+        properties.setProperty("positional.parameter.count", String.valueOf(1));
+        properties.setProperty("1.positional.parameter.synopsis", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setPositionalParametersFromProperties(command);
+        String actual = command.getPositionalParameters().get(0).getSynopsis();
+
+        assertEquals(expected, actual);
+    }
 }
