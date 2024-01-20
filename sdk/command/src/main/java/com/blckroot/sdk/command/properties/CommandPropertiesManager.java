@@ -83,33 +83,61 @@ public class CommandPropertiesManager {
     }
 
     public static void setPositionalParametersFromProperties(Command command) {
+        LOGGER.log(Level.TRACE, "setting positional parameters from properties for command: " + command);
         Properties properties = command.getProperties();
+
         final String POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY = "positional.parameter.count";
+        LOGGER.log(Level.TRACE,
+                "POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY: " + POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY);
 
         if (properties.getProperty(POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY) != null) {
             int positionalParameterCount =
                     Integer.parseInt(properties.getProperty(POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY));
+            LOGGER.log(Level.TRACE,
+                    "positional parameter count found in properties. " + positionalParameterCount);
+
             final String POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY = "positional.parameter.label";
+            LOGGER.log(Level.TRACE, "POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY: " +
+                    POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY);
+
             final String POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY = "positional.parameter.synopsis";
+            LOGGER.log(Level.TRACE, "POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY: " +
+                    POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY);
+
             final String POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY = "positional.parameter.value";
+            LOGGER.log(Level.TRACE, "POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY: " +
+                    POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY);
 
             for (int i = 1; i <= positionalParameterCount; i+=1) {
                 PositionalParameter positionalParameter = new PositionalParameter();
 
                 if (properties.getProperty(i + "." + POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY) != null) {
-                    positionalParameter.setLabel(
-                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY));
+                    String positionalParameterLabel =
+                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY);
+                    LOGGER.log(Level.TRACE,
+                            "positional parameter label found in properties. " +
+                                    "Setting positional parameter label: " + positionalParameterLabel);
+                    positionalParameter.setLabel(positionalParameterLabel);
                 }
 
                 if (properties.getProperty(i + "." + POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY) != null) {
-                    positionalParameter.setSynopsis(
-                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY));
+                    String positionalParameterSynopsis =
+                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY);
+                    LOGGER.log(Level.TRACE,
+                            "positional parameter synopsis found in properties. " +
+                                    "Setting positional parameter synopsis: " + positionalParameterSynopsis);
+                    positionalParameter.setSynopsis(positionalParameterSynopsis);
                 }
 
                 if (properties.getProperty(i + "." + POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY) != null) {
-                    positionalParameter.setValue(
-                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY));
+                    String positionalParameterValue =
+                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY);
+                    LOGGER.log(Level.TRACE,
+                            "positional parameter value found in properties. " +
+                                    "Setting positional parameter value: " + positionalParameterValue);
+                    positionalParameter.setValue(positionalParameterValue);
                 }
+                LOGGER.log(Level.TRACE, "adding positional parameter to command: " + command);
                 command.addPositionalParameter(positionalParameter);
             }
         }
