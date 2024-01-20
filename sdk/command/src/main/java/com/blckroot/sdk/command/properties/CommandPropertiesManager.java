@@ -5,38 +5,80 @@ import com.blckroot.sdk.command.CommandFactory;
 import com.blckroot.sdk.command.model.Option;
 import com.blckroot.sdk.command.model.PositionalParameter;
 import com.blckroot.sdk.filesystem.service.FileSystemService;
+import com.blckroot.sdk.filesystem.validator.FileSystemValidator;
 
 import java.util.Properties;
 
+import static java.lang.System.Logger;
+import static java.lang.System.Logger.Level;
+
 public class CommandPropertiesManager {
+    private final static Logger LOGGER = System.getLogger(CommandPropertiesManager.class.getName());
     public static void setPropertiesFromFile(Command command, String filePath) {
-        FileSystemService fileSystemService = new FileSystemService();
-        Properties properties = fileSystemService.getPropertiesFromFile(filePath);
-        command.setProperties(properties);
+        LOGGER.log(Level.TRACE, "setting command properties from file: " + filePath);
+        FileSystemValidator fileSystemValidator = new FileSystemValidator();
+
+        LOGGER.log(Level.TRACE, "validating file exists: " + filePath);
+        if (fileSystemValidator.fileExists(filePath)) {
+            LOGGER.log(Level.TRACE, "file exists: " + filePath);
+            FileSystemService fileSystemService = new FileSystemService();
+
+            LOGGER.log(Level.TRACE, "getting properties from file: " + filePath);
+            Properties properties = fileSystemService.getPropertiesFromFile(filePath);
+
+            LOGGER.log(Level.TRACE, "setting properties for command: " + command);
+            command.setProperties(properties);
+        } else {
+            LOGGER.log(Level.TRACE, "command properties not set. File does not exist: " + filePath);
+        }
     }
 
     public static void setAttributesFromProperties(Command command) {
+        LOGGER.log(Level.TRACE, "setting command attributes from properties for command: " + command);
         Properties properties = command.getProperties();
+
         final String COMMAND_VERSION_PROPERTY_KEY = "version";
+        LOGGER.log(Level.TRACE, "COMMAND_VERSION_PROPERTY_KEY: " + COMMAND_VERSION_PROPERTY_KEY);
+
         final String COMMAND_SYNOPSIS_PROPERTY_KEY = "synopsis";
+        LOGGER.log(Level.TRACE, "COMMAND_SYNOPSIS_PROPERTY_KEY: " + COMMAND_SYNOPSIS_PROPERTY_KEY);
+
         final String COMMAND_DESCRIPTION_PROPERTY_KEY = "description";
+        LOGGER.log(Level.TRACE, "COMMAND_DESCRIPTION_PROPERTY_KEY: " + COMMAND_DESCRIPTION_PROPERTY_KEY);
+
         final String COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY = "execute.without.arguments";
+        LOGGER.log(Level.TRACE,
+                "COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY: " + COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY);
 
         if (properties.getProperty(COMMAND_VERSION_PROPERTY_KEY) != null) {
-            command.setVersion(properties.getProperty(COMMAND_VERSION_PROPERTY_KEY));
+            String commandVersion = properties.getProperty(COMMAND_VERSION_PROPERTY_KEY);
+            LOGGER.log(Level.TRACE,
+                    "command version found in properties. Setting command version: " + commandVersion);
+            command.setVersion(commandVersion);
         }
 
         if (properties.getProperty(COMMAND_SYNOPSIS_PROPERTY_KEY) != null) {
-            command.setSynopsis(properties.getProperty(COMMAND_SYNOPSIS_PROPERTY_KEY));
+            String commandSynopsis = properties.getProperty(COMMAND_SYNOPSIS_PROPERTY_KEY);
+            LOGGER.log(Level.TRACE,
+                    "command synopsis found in properties. Setting command synopsis: " + commandSynopsis);
+            command.setSynopsis(commandSynopsis);
         }
 
         if (properties.getProperty(COMMAND_DESCRIPTION_PROPERTY_KEY) != null) {
-            command.setDescription(properties.getProperty(COMMAND_DESCRIPTION_PROPERTY_KEY));
+            String commandDescription = properties.getProperty(COMMAND_DESCRIPTION_PROPERTY_KEY);
+            LOGGER.log(Level.TRACE,
+                    "command description found in properties. Setting command description: " + commandDescription);
+            command.setDescription(commandDescription);
         }
 
         if (properties.getProperty(COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY) != null) {
-            command.setExecutesWithoutArguments(Boolean.valueOf(
-                    properties.getProperty(COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY)));
+            boolean commandExecutesWithoutArguments = Boolean.parseBoolean(
+                    properties.getProperty(COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY));
+            LOGGER.log(
+                    Level.TRACE,
+                    "command executes without arguments value found in properties. " +
+                            "Setting command executes without arguments value: " + commandExecutesWithoutArguments);
+            command.setExecutesWithoutArguments(commandExecutesWithoutArguments);
         }
     }
 

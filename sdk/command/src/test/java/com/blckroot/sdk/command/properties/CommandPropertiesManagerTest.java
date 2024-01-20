@@ -24,6 +24,12 @@ public class CommandPropertiesManagerTest {
     // === PROPERTIES SET FROM FILE =========
 
     @Test
+    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__file_path_null() {
+        CommandPropertiesManager.setPropertiesFromFile(command, null);
+        assertNull(command.getProperties());
+    }
+
+    @Test
     void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__version() {
         String expected = commandProperties.getProperty("version");
         CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
