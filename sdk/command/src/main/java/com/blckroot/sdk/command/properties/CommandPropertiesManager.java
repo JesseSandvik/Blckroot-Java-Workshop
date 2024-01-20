@@ -17,10 +17,10 @@ public class CommandPropertiesManager {
 
     public static void setAttributesFromProperties(Command command) {
         Properties properties = command.getProperties();
-        final String COMMAND_VERSION_PROPERTY_KEY="version";
-        final String COMMAND_SYNOPSIS_PROPERTY_KEY="synopsis";
-        final String COMMAND_DESCRIPTION_PROPERTY_KEY="description";
-        final String COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY="execute.without.arguments";
+        final String COMMAND_VERSION_PROPERTY_KEY = "version";
+        final String COMMAND_SYNOPSIS_PROPERTY_KEY = "synopsis";
+        final String COMMAND_DESCRIPTION_PROPERTY_KEY = "description";
+        final String COMMAND_EXECUTES_WITHOUT_ARGUMENTS_PROPERTY_KEY = "execute.without.arguments";
 
         if (properties.getProperty(COMMAND_VERSION_PROPERTY_KEY) != null) {
             command.setVersion(properties.getProperty(COMMAND_VERSION_PROPERTY_KEY));
@@ -42,14 +42,14 @@ public class CommandPropertiesManager {
 
     public static void setPositionalParametersFromProperties(Command command) {
         Properties properties = command.getProperties();
-        final String POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY="positional.parameter.count";
+        final String POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY = "positional.parameter.count";
 
         if (properties.getProperty(POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY) != null) {
             int positionalParameterCount =
                     Integer.parseInt(properties.getProperty(POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY));
-            final String POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY="positional.parameter.label";
-            final String POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY="positional.parameter.synopsis";
-            final String POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY="positional.parameter.value";
+            final String POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY = "positional.parameter.label";
+            final String POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY = "positional.parameter.synopsis";
+            final String POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY = "positional.parameter.value";
 
             for (int i = 1; i <= positionalParameterCount; i+=1) {
                 PositionalParameter positionalParameter = new PositionalParameter();
@@ -75,15 +75,15 @@ public class CommandPropertiesManager {
 
     public static void setOptionsFromProperties(Command command) {
         Properties properties = command.getProperties();
-        final String OPTION_COUNT_PROPERTY_KEY="option.count";
+        final String OPTION_COUNT_PROPERTY_KEY = "option.count";
 
         if (properties.getProperty(OPTION_COUNT_PROPERTY_KEY) != null) {
             int optionCount = Integer.parseInt(properties.getProperty(OPTION_COUNT_PROPERTY_KEY));
-            final String OPTION_LONG_NAME_PROPERTY_KEY="option.long.name";
-            final String OPTION_SHORT_NAME_PROPERTY_KEY="option.short.name";
-            final String OPTION_SYNOPSIS_PROPERTY_KEY="option.synopsis";
-            final String OPTION_LABEL_PROPERTY_KEY="option.parameter.label";
-            final String OPTION_VALUE_PROPERTY_KEY="option.value";
+            final String OPTION_LONG_NAME_PROPERTY_KEY = "option.long.name";
+            final String OPTION_SHORT_NAME_PROPERTY_KEY = "option.short.name";
+            final String OPTION_SYNOPSIS_PROPERTY_KEY = "option.synopsis";
+            final String OPTION_LABEL_PROPERTY_KEY = "option.parameter.label";
+            final String OPTION_VALUE_PROPERTY_KEY = "option.value";
 
             for (int i = 1; i <= optionCount; i+=1) {
                 Option option = new Option();
@@ -114,20 +114,19 @@ public class CommandPropertiesManager {
 
     public static void setSubcommandsFromProperties(Command command) {
         Properties properties = command.getProperties();
-        final String SUBCOMMANDS_PROPERTY_KEY="subcommands";
+        final String SUBCOMMAND_COUNT_PROPERTY_KEY = "subcommand.count";
 
-        if (properties.getProperty(SUBCOMMANDS_PROPERTY_KEY) != null) {
-            String[] subcommandNames = properties.getProperty(SUBCOMMANDS_PROPERTY_KEY).split(",");
+        if (properties.getProperty(SUBCOMMAND_COUNT_PROPERTY_KEY) != null) {
+            int subcommandCount = Integer.parseInt(properties.getProperty(SUBCOMMAND_COUNT_PROPERTY_KEY));
 
-            for (String subcommandName : subcommandNames) {
-                Command subcommand = CommandFactory.create(subcommandName);
-//                TODO: add properties file filepath as argument for subcommand
-//                CommandPropertiesManager.setPropertiesFromFile(subcommand, "");
-//                CommandPropertiesManager.setAttributesFromProperties(subcommand);
-//                CommandPropertiesManager.setPositionalParametersFromProperties(subcommand);
-//                CommandPropertiesManager.setOptionsFromProperties(subcommand);
-//                CommandPropertiesManager.setSubcommandProperties(subcommand);
-                command.addSubcommand(subcommand);
+            for (int i = 1; i <= subcommandCount; i+=1) {
+                final String SUBCOMMAND_NAME_PROPERTY_KEY = "subcommand.name";
+
+                if (properties.getProperty(i + "." + SUBCOMMAND_NAME_PROPERTY_KEY) != null) {
+                    Command subcommand =
+                            CommandFactory.create(properties.getProperty(i + "." + SUBCOMMAND_NAME_PROPERTY_KEY));
+                    command.addSubcommand(subcommand);
+                }
             }
         }
     }
