@@ -239,4 +239,47 @@ public class CommandPropertiesManagerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_positional_parameters_from_properties__value() {
+        String expected = "true";
+        Properties properties = new Properties();
+        properties.setProperty("positional.parameter.count", String.valueOf(1));
+        properties.setProperty("1.positional.parameter.value", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setPositionalParametersFromProperties(command);
+        String actual = (String) command.getPositionalParameters().get(0).getValue();
+
+        assertEquals(expected, actual);
+    }
+
+    // === OPTIONS FROM PROPERTIES =========
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_options_from_properties__count() {
+        int expected = 2;
+        Properties properties = new Properties();
+        properties.setProperty("option.count", String.valueOf(expected));
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setOptionsFromProperties(command);
+        int actual = command.getOptions().size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_options_from_properties__long_name() {
+        String expected = "--optionA";
+        Properties properties = new Properties();
+        properties.setProperty("option.count", String.valueOf(1));
+        properties.setProperty("1.option.long.name", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setOptionsFromProperties(command);
+        String actual = command.getOptions().get(0).getLongName();
+
+        assertEquals(expected, actual);
+    }
 }

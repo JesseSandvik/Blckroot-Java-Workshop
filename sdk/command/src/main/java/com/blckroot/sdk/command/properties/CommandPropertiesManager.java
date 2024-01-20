@@ -49,6 +49,7 @@ public class CommandPropertiesManager {
                     Integer.parseInt(properties.getProperty(POSITIONAL_PARAMETER_COUNT_PROPERTY_KEY));
             final String POSITIONAL_PARAMETER_LABEL_PROPERTY_KEY="positional.parameter.label";
             final String POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY="positional.parameter.synopsis";
+            final String POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY="positional.parameter.value";
 
             for (int i = 1; i <= positionalParameterCount; i+=1) {
                 PositionalParameter positionalParameter = new PositionalParameter();
@@ -63,6 +64,10 @@ public class CommandPropertiesManager {
                             properties.getProperty(i + "." + POSITIONAL_PARAMETER_SYNOPSIS_PROPERTY_KEY));
                 }
 
+                if (properties.getProperty(i + "." + POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY) != null) {
+                    positionalParameter.setValue(
+                            properties.getProperty(i + "." + POSITIONAL_PARAMETER_VALUE_PROPERTY_KEY));
+                }
                 command.addPositionalParameter(positionalParameter);
             }
         }
