@@ -394,4 +394,50 @@ public class CommandPropertiesManagerTest {
 
         assertEquals(expected, actual);
     }
+
+    // === SUBCOMMANDS FROM PROPERTIES =========
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_subcommands_from_properties__count() {
+        String subcommands = "subcommandA,subcommandB,subcommandC";
+        int expected = subcommands.split(",").length;
+
+        Properties properties = new Properties();
+        properties.setProperty("subcommands", subcommands);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setSubcommandsFromProperties(command);
+        int actual = command.getSubcommands().size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_subcommands_from_properties__name__single() {
+        String expected = "subcommandA";
+
+        Properties properties = new Properties();
+        properties.setProperty("subcommands", expected);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setSubcommandsFromProperties(command);
+        String actual = command.getSubcommands().get(0).getName();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void COMMAND_PROPERTIES_MANAGER__set_subcommands_from_properties__name__multiple() {
+        String expected = "subcommandB";
+        String subcommands = "subcommandA," + expected + ",subcommandC";
+
+        Properties properties = new Properties();
+        properties.setProperty("subcommands", subcommands);
+        command.setProperties(properties);
+
+        CommandPropertiesManager.setSubcommandsFromProperties(command);
+        String actual = command.getSubcommands().get(1).getName();
+
+        assertEquals(expected, actual);
+    }
 }

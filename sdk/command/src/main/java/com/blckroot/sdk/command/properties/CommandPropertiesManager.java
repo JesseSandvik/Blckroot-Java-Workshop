@@ -112,7 +112,7 @@ public class CommandPropertiesManager {
         }
     }
 
-    public static void setSubcommandProperties(Command command) {
+    public static void setSubcommandsFromProperties(Command command) {
         Properties properties = command.getProperties();
         final String SUBCOMMANDS_PROPERTY_KEY="subcommands";
 
