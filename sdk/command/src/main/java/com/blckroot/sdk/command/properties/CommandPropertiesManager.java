@@ -83,6 +83,7 @@ public class CommandPropertiesManager {
             final String OPTION_SHORT_NAME_PROPERTY_KEY="option.short.name";
             final String OPTION_SYNOPSIS_PROPERTY_KEY="option.synopsis";
             final String OPTION_LABEL_PROPERTY_KEY="option.parameter.label";
+            final String OPTION_VALUE_PROPERTY_KEY="option.value";
 
             for (int i = 1; i <= optionCount; i+=1) {
                 Option option = new Option();
@@ -103,6 +104,9 @@ public class CommandPropertiesManager {
                     option.setParameterLabel(properties.getProperty(i + "." + OPTION_LABEL_PROPERTY_KEY));
                 }
 
+                if (properties.getProperty(i + "." + OPTION_VALUE_PROPERTY_KEY) != null) {
+                    option.setValue(properties.getProperty(i + "." + OPTION_VALUE_PROPERTY_KEY));
+                }
                 command.addOption(option);
             }
         }
