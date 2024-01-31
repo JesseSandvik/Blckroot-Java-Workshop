@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CommandPropertiesManagerTest {
     private final String COMMAND_PROPERTIES_FILE_PATH = "src/test/resources/etc/echo.properties";
-    private Command command = CommandFactory.create("echo");
+    private final Command command = CommandFactory.create("echo");
     private Properties commandProperties;
 
     @BeforeEach
