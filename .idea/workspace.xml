@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="aaf697cc-80f4-4059-92e8-905439220463" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/ExecutorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/ExecutorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/execution/CommandExecutionState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/processor/CommandProcessorState.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/processor/CommandProcessorState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,13 +57,18 @@
     "JUnit.SetCommandPropertiesTest.SET_COMMAND_PROPERTIES__option__label.executor": "Run",
     "JUnit.SetCommandPropertiesTest.executor": "Run",
     "Maven.blckroot-sdk [clean].executor": "Run",
+    "Maven.blckroot-sdk [test].executor": "Run",
     "Maven.blckroot-sdk [verify].executor": "Run",
     "Maven.blckroot-sdk-command [clean].executor": "Run",
+    "Maven.blckroot-sdk-command [test].executor": "Run",
+    "Maven.blckroot-sdk-command [verify].executor": "Run",
     "Maven.blckroot-sdk-filesystem [clean].executor": "Run",
     "Maven.blckroot-sdk-filesystem [package].executor": "Run",
+    "Maven.blckroot-sdk-filesystem [test].executor": "Run",
     "Maven.blckroot-sdk-filesystem [verify].executor": "Run",
     "Maven.blckroot-sdk-logger [clean].executor": "Run",
     "Maven.blckroot-sdk-logger [install].executor": "Run",
+    "Maven.blckroot-sdk-logger [test].executor": "Run",
     "Maven.blckroot-sdk-logger [verify].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",

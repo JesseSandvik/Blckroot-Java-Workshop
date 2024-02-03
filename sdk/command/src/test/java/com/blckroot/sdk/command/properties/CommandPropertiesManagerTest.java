@@ -137,16 +137,6 @@ public class CommandPropertiesManagerTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void COMMAND_PROPERTIES_MANAGER__set_properties_from_file__subcommands() {
-        String expected = commandProperties.getProperty("subcommands");
-        CommandPropertiesManager.setPropertiesFromFile(command, COMMAND_PROPERTIES_FILE_PATH);
-        String actual = command.getProperties().getProperty("subcommands");
-
-        assertNotNull(expected);
-        assertEquals(expected, actual);
-    }
-
     // === ATTRIBUTES FROM PROPERTIES =========
 
     @Test
@@ -397,37 +387,6 @@ public class CommandPropertiesManagerTest {
 
         CommandPropertiesManager.setOptionsFromProperties(command);
         int actual = Integer.parseInt((String) command.getOptions().get(0).getValue());
-
-        assertEquals(expected, actual);
-    }
-
-    // === SUBCOMMANDS FROM PROPERTIES =========
-
-    @Test
-    void COMMAND_PROPERTIES_MANAGER__set_subcommands_from_properties__count() {
-        int expected = 2;
-        Properties properties = new Properties();
-        properties.setProperty("subcommand.count", String.valueOf(expected));
-        properties.setProperty("1.subcommand.name", "subcommandA");
-        properties.setProperty("2.subcommand.name", "subcommandB");
-        command.setProperties(properties);
-
-        CommandPropertiesManager.setSubcommandsFromProperties(command);
-        int actual = command.getSubcommands().size();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void COMMAND_PROPERTIES_MANAGER__set_subcommands_from_properties__name() {
-        String expected = "subcommandA";
-        Properties properties = new Properties();
-        properties.setProperty("subcommand.count", String.valueOf(1));
-        properties.setProperty("1.subcommand.name", expected);
-        command.setProperties(properties);
-
-        CommandPropertiesManager.setSubcommandsFromProperties(command);
-        String actual = command.getSubcommands().get(0).getName();
 
         assertEquals(expected, actual);
     }

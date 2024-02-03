@@ -39,12 +39,24 @@ public enum CommandProcessorState {
         @Override
         public Integer processCurrentState(Command command) {
             LOGGER.log(Level.TRACE, "executing command processor state: " + ASSEMBLE_ROOT_COMMAND.name());
-            String currentDir = System.getProperty("user.dir");
+            String applicationRootDirectory = System.getProperty("blckroot.app.root.dir");
+            LOGGER.log(Level.DEBUG, "application root directory: " + applicationRootDirectory);
+
             String fileSeparator = FileSystems.getDefault().getSeparator();
-            String commandPropertiesFilePath = currentDir + fileSeparator + "sdk/command/src/test/resources/etc/echo.properties";
+            String commandPropertiesFilePath =
+                    applicationRootDirectory + fileSeparator + "etc" + fileSeparator + command.getName() + ".properties";
+            LOGGER.log(Level.DEBUG, "command properties file path: " + commandPropertiesFilePath);
+
+            LOGGER.log(Level.TRACE, "setting command properties from file for command: " + command);
             CommandPropertiesManager.setPropertiesFromFile(command, commandPropertiesFilePath);
+
+            LOGGER.log(Level.TRACE, "setting command attributes from properties for command: " + command);
             CommandPropertiesManager.setAttributesFromProperties(command);
+
+            LOGGER.log(Level.TRACE, "setting positional parameters from properties for command: " + command);
             CommandPropertiesManager.setPositionalParametersFromProperties(command);
+
+            LOGGER.log(Level.TRACE, "setting options from properties for command: " + command);
             CommandPropertiesManager.setOptionsFromProperties(command);
             return 0;
         }
@@ -62,6 +74,7 @@ public enum CommandProcessorState {
         @Override
         public Integer processCurrentState(Command command) {
             LOGGER.log(Level.TRACE, "executing command processor state: " + CALL_COMMAND.name());
+            LOGGER.log(Level.DEBUG, "calling command: " + command);
             return command.call();
         }
     },
