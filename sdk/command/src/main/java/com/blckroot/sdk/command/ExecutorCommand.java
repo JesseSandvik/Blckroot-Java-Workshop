@@ -14,7 +14,7 @@ public class ExecutorCommand extends Command {
 
     @Override
     public Integer call() {
-        LOGGER.log(Level.TRACE, "executing call for executor command");
+        LOGGER.log(Level.TRACE, "executing call for executor command: " + this);
         Properties properties = this.getProperties();
 
         final String EXECUTABLE_FILE_PATH_PROPERTY_KEY = "executable.file.path";
