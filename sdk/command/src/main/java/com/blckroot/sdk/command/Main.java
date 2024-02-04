@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         System.setProperty("blckroot.app.root.dir", "sdk/command/src/test/resources");
         LoggerConfigurator loggerConfigurator = new BlckrootLoggerConfigurator();
-        loggerConfigurator.setLevel(System.Logger.Level.TRACE);
+        loggerConfigurator.setLevel(System.Logger.Level.DEBUG);
 
         Command command = CommandFactory.create("echo");
         PositionalParameter positionalParameter = new PositionalParameter();

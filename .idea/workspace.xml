@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/processor/CommandProcessorState.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/processor/CommandProcessorState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/main/java/com/blckroot/sdk/command/properties/CommandPropertiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/java/com/blckroot/sdk/command/properties/CommandPropertiesManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/command/src/test/resources/etc/echo.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,11 +74,12 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jsandvik/Projects/Blckroot-Java-Workshop/sdk/command/src/test/resources"
+    "last_opened_file_path": "/Users/jsandvik/Projects/Blckroot-Java-Workshop/sdk/command/src/test/resources/etc"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sdk/command/src/test/resources/etc" />
       <recent name="$PROJECT_DIR$/sdk/command/src/test/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

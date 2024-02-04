@@ -4,6 +4,9 @@ import com.blckroot.sdk.command.Command;
 import com.blckroot.sdk.command.properties.CommandPropertiesManager;
 
 import java.nio.file.FileSystems;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Queue;
 
 import static java.lang.System.Logger;
 import static java.lang.System.Logger.Level;
@@ -15,9 +18,9 @@ public enum CommandProcessorState {
             LOGGER.log(
                     Level.TRACE,
                     "transitioning command processor state from "
-                            + INITIAL.name() + " to " + ASSEMBLE_ROOT_COMMAND.name()
+                            + INITIAL.name() + " to " + ASSEMBLE_COMMANDS.name()
             );
-            return ASSEMBLE_ROOT_COMMAND;
+            return ASSEMBLE_COMMANDS;
         }
 
         @Override
@@ -26,27 +29,21 @@ public enum CommandProcessorState {
             return 0;
         }
     },
-    ASSEMBLE_ROOT_COMMAND {
+    ASSEMBLE_COMMANDS {
         @Override
         public CommandProcessorState transitionToNextState() {
             LOGGER.log(
                     Level.TRACE,
                     "transitioning command processor state from "
-                            + ASSEMBLE_ROOT_COMMAND.name() + " to " + CALL_COMMAND.name()
+                            + ASSEMBLE_COMMANDS.name() + " to " + CALL_COMMAND.name()
             );
             return CALL_COMMAND;
         }
         @Override
         public Integer processCurrentState(Command command) {
-            LOGGER.log(Level.TRACE, "executing command processor state: " + ASSEMBLE_ROOT_COMMAND.name());
-            String applicationRootDirectory = System.getProperty("blckroot.app.root.dir");
-            LOGGER.log(Level.DEBUG, "application root directory: " + applicationRootDirectory);
+            LOGGER.log(Level.TRACE, "executing command processor state: " + ASSEMBLE_COMMANDS.name());
 
-            String fileSeparator = FileSystems.getDefault().getSeparator();
-            String commandPropertiesFilePath =
-                    applicationRootDirectory + fileSeparator + "etc" + fileSeparator + command.getName() + ".properties";
-            LOGGER.log(Level.DEBUG, "command properties file path: " + commandPropertiesFilePath);
-
+            String commandPropertiesFilePath = getCommandPropertiesFilePath(command);
             LOGGER.log(Level.TRACE, "setting command properties from file for command: " + command);
             CommandPropertiesManager.setPropertiesFromFile(command, commandPropertiesFilePath);
 
@@ -58,6 +55,28 @@ public enum CommandProcessorState {
 
             LOGGER.log(Level.TRACE, "setting options from properties for command: " + command);
             CommandPropertiesManager.setOptionsFromProperties(command);
+
+            LOGGER.log(Level.TRACE, "setting options from properties for command: " + command);
+            CommandPropertiesManager.setSubcommandsFromProperties(command);
+
+            LOGGER.log(Level.TRACE, "assembling subcommands for command: " + command);
+            Queue<Command> commandQueue = new ArrayDeque<>(command.getSubcommands());
+            while (!commandQueue.isEmpty()) {
+                Command subcommand = commandQueue.remove();
+                LOGGER.log(Level.DEBUG, "assembling subcommand: " + subcommand);
+                processCurrentState(subcommand);
+
+                if (!subcommand.getSubcommands().isEmpty()) {
+                    LOGGER.log(
+                            Level.TRACE,
+                            "adding nested subcommands to assembly queue for subcommand: " + subcommand
+                    );
+                    commandQueue.addAll(subcommand.getSubcommands());
+                }
+
+                LOGGER.log(Level.DEBUG, "adding subcommand: " + subcommand + " to command: " + command);
+                command.addSubcommand(subcommand);
+            }
             return 0;
         }
     },
@@ -91,6 +110,17 @@ public enum CommandProcessorState {
     };
 
     private final static Logger LOGGER = System.getLogger(CommandProcessorState.class.getName());
+
+    private static String getCommandPropertiesFilePath(Command command) {
+        String applicationRootDirectory = System.getProperty("blckroot.app.root.dir");
+        LOGGER.log(Level.DEBUG, "application root directory: " + applicationRootDirectory);
+
+        String fileSeparator = FileSystems.getDefault().getSeparator();
+        String commandPropertiesFilePath =
+                applicationRootDirectory + fileSeparator + "etc" + fileSeparator + command.getName() + ".properties";
+        LOGGER.log(Level.DEBUG, "command properties file path: " + commandPropertiesFilePath);
+        return commandPropertiesFilePath;
+    }
 
     public abstract CommandProcessorState transitionToNextState();
     public abstract Integer processCurrentState(Command command);

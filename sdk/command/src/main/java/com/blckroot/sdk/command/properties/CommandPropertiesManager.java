@@ -212,4 +212,21 @@ public class CommandPropertiesManager {
             }
         }
     }
+
+    public static void setSubcommandsFromProperties(Command command) {
+        LOGGER.log(Level.DEBUG, "setting subcommands from properties for command: " + command);
+        Properties properties = command.getProperties();
+
+        final String SUBCOMMANDS_PROPERTY_KEY = "subcommands";
+        LOGGER.log(Level.DEBUG, "SUBCOMMANDS_PROPERTY_KEY: " + SUBCOMMANDS_PROPERTY_KEY);
+
+        if (properties.getProperty(SUBCOMMANDS_PROPERTY_KEY) != null) {
+            String[] subcommandNames = properties.getProperty(SUBCOMMANDS_PROPERTY_KEY).split(",");
+
+            for (String subcommandName : subcommandNames) {
+                Command subcommand = CommandFactory.create(subcommandName);
+                command.addSubcommand(subcommand);
+            }
+        }
+    }
 }
