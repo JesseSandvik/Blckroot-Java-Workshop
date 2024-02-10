@@ -26,10 +26,6 @@
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
         </dependency>
-        <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli-codegen</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
