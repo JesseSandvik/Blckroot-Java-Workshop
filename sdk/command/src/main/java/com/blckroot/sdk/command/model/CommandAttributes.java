@@ -6,6 +6,7 @@ public class CommandAttributes {
     private String synopsis;
     private String description;
     private Boolean executesWithoutArguments;
+    private String[] originalArguments;
 
     public String getName() {
         return name;
@@ -45,5 +46,13 @@ public class CommandAttributes {
 
     public void setExecutesWithoutArguments(Boolean executesWithoutArguments) {
         this.executesWithoutArguments = executesWithoutArguments;
+    }
+
+    public String[] getOriginalArguments() {
+        return originalArguments;
+    }
+
+    public void setOriginalArguments(String[] originalArguments) {
+        this.originalArguments = originalArguments;
     }
 }

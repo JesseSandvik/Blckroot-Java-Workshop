@@ -26,6 +26,7 @@
         <jacoco.version>0.8.11</jacoco.version>
         <junit.version>5.10.1</junit.version>
         <log4j.version>2.22.1</log4j.version>
+        <picocli.version>4.7.5</picocli.version>
     </properties>
 
     <build>
@@ -54,6 +55,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>${picocli.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli-codegen</artifactId>
+                <version>${picocli.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>

@@ -20,6 +20,8 @@ public interface ICommand extends Callable<Integer> {
     void setDescription(String description);
     Boolean getExecutesWithoutArguments();
     void setExecutesWithoutArguments(Boolean executesWithoutArguments);
+    String[] getOriginalArguments();
+    void setOriginalArguments(String[] originalArguments);
     List<PositionalParameter> getPositionalParameters();
     void addPositionalParameter(PositionalParameter positionalParameter);
     List<Option> getOptions();

@@ -1,11 +1,11 @@
 package com.blckroot.sdk.command.processor;
 
 import com.blckroot.sdk.command.Command;
+import com.blckroot.sdk.command.parser.CommandParser;
 import com.blckroot.sdk.command.properties.CommandPropertiesManager;
 
 import java.nio.file.FileSystems;
 import java.util.ArrayDeque;
-import java.util.Collection;
 import java.util.Queue;
 
 import static java.lang.System.Logger;
@@ -18,9 +18,9 @@ public enum CommandProcessorState {
             LOGGER.log(
                     Level.TRACE,
                     "transitioning command processor state from "
-                            + INITIAL.name() + " to " + ASSEMBLE_COMMANDS.name()
+                            + INITIAL.name() + " to " + ASSEMBLE_COMMANDS_DYNAMICALLY.name()
             );
-            return ASSEMBLE_COMMANDS;
+            return ASSEMBLE_COMMANDS_DYNAMICALLY;
         }
 
         @Override
@@ -29,19 +29,19 @@ public enum CommandProcessorState {
             return 0;
         }
     },
-    ASSEMBLE_COMMANDS {
+    ASSEMBLE_COMMANDS_DYNAMICALLY {
         @Override
         public CommandProcessorState transitionToNextState() {
             LOGGER.log(
                     Level.TRACE,
                     "transitioning command processor state from "
-                            + ASSEMBLE_COMMANDS.name() + " to " + CALL_COMMAND.name()
+                            + ASSEMBLE_COMMANDS_DYNAMICALLY.name() + " to " + PARSE_COMMAND_LINE.name()
             );
-            return CALL_COMMAND;
+            return PARSE_COMMAND_LINE;
         }
         @Override
         public Integer processCurrentState(Command command) {
-            LOGGER.log(Level.TRACE, "executing command processor state: " + ASSEMBLE_COMMANDS.name());
+            LOGGER.log(Level.TRACE, "executing command processor state: " + ASSEMBLE_COMMANDS_DYNAMICALLY.name());
 
             String commandPropertiesFilePath = getCommandPropertiesFilePath(command);
             LOGGER.log(Level.TRACE, "setting command properties from file for command: " + command);
@@ -80,19 +80,35 @@ public enum CommandProcessorState {
             return 0;
         }
     },
-    CALL_COMMAND {
+    PARSE_COMMAND_LINE {
         @Override
         public CommandProcessorState transitionToNextState() {
             LOGGER.log(
                     Level.TRACE,
-                    "transitioning command processor state from " + CALL_COMMAND.name() + " to " + FINISHED.name()
+                    "transitioning command processor state from "
+                            + PARSE_COMMAND_LINE.name() + " to " + CALL_INVOKED_COMMAND.name()
+            );
+            return CALL_INVOKED_COMMAND;
+        }
+
+        @Override
+        public Integer processCurrentState(Command command) {
+            return CommandParser.parse(command);
+        }
+    },
+    CALL_INVOKED_COMMAND {
+        @Override
+        public CommandProcessorState transitionToNextState() {
+            LOGGER.log(
+                    Level.TRACE,
+                    "transitioning command processor state from " + CALL_INVOKED_COMMAND.name() + " to " + FINISHED.name()
             );
             return FINISHED;
         }
 
         @Override
         public Integer processCurrentState(Command command) {
-            LOGGER.log(Level.TRACE, "executing command processor state: " + CALL_COMMAND.name());
+            LOGGER.log(Level.TRACE, "executing command processor state: " + CALL_INVOKED_COMMAND.name());
             LOGGER.log(Level.DEBUG, "calling command: " + command);
             return command.call();
         }
