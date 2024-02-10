@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandParserTest {
     private final Command command = CommandFactory.create("test");
@@ -47,5 +48,16 @@ public class CommandParserTest {
         assertTrue(outputStream.toString().contains(command.getName()));
         assertTrue(outputStream.toString().contains("-h"));
         assertTrue(outputStream.toString().contains("--help"));
+    }
+
+    @Test
+    void COMMAND_PARSER__returns_success_exit_code_for_successful_execution() {
+        int expected = 0;
+
+        String[] arguments = new String[]{"-h"};
+        command.setOriginalArguments(arguments);
+        int actual = CommandParser.parse(command);
+
+        assertEquals(expected, actual);
     }
 }
