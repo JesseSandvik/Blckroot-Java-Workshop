@@ -60,4 +60,34 @@ public class CommandParserTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void COMMAND_PARSER__prints_command_synopsis_as_usage_help_synopsis() {
+        String expected = "Synopsis for the test command";
+        command.setSynopsis(expected);
+
+        String[] arguments = new String[]{"-h"};
+        command.setOriginalArguments(arguments);
+        CommandParser.parse(command);
+
+        assertTrue(outputStream.toString().contains(command.getName()));
+        assertTrue(outputStream.toString().contains(expected));
+        assertTrue(outputStream.toString().contains("-h"));
+        assertTrue(outputStream.toString().contains("--help"));
+    }
+
+    @Test
+    void COMMAND_PARSER__prints_command_description_as_usage_help_description() {
+        String expected = "A detailed description for the test command including examples.";
+        command.setDescription(expected);
+
+        String[] arguments = new String[]{"-h"};
+        command.setOriginalArguments(arguments);
+        CommandParser.parse(command);
+
+        assertTrue(outputStream.toString().contains(command.getName()));
+        assertTrue(outputStream.toString().contains(expected));
+        assertTrue(outputStream.toString().contains("-h"));
+        assertTrue(outputStream.toString().contains("--help"));
+    }
 }

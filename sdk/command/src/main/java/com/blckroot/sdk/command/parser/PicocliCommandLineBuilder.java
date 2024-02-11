@@ -14,6 +14,15 @@ public class PicocliCommandLineBuilder {
         this.commandSpec = CommandSpec.create().name(command.getName());
     }
 
+    public PicocliCommandLineBuilder addCustomUsageHelp() {
+        commandSpec.usageMessage()
+                .abbreviateSynopsis(true)
+                .parameterListHeading("%nPositional Parameters:%n")
+                .optionListHeading("%nOptions:%n")
+                .commandListHeading("%nCommands:%n");
+        return this;
+    }
+
     public PicocliCommandLineBuilder addStandardUsageHelpOption() {
         commandSpec.addOption(OptionSpec
                 .builder("-h", "--help")
@@ -21,6 +30,20 @@ public class PicocliCommandLineBuilder {
                 .usageHelp(true)
                 .build()
         );
+        return this;
+    }
+
+    public PicocliCommandLineBuilder setUsageHelpDescriptionAsCommandDescription() {
+        if (command.getDescription() != null) {
+            commandSpec.usageMessage().footer("%n" + command.getDescription() + "%n");
+        }
+        return this;
+    }
+
+    public PicocliCommandLineBuilder setUsageHelpSynopsisAsCommandSynopsis() {
+        if (command.getSynopsis() != null) {
+            commandSpec.usageMessage().description(command.getSynopsis());
+        }
         return this;
     }
 

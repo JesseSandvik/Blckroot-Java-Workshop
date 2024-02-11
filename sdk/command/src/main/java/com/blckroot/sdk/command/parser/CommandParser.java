@@ -7,6 +7,9 @@ public class CommandParser {
     public static Integer parse(Command command) {
         CommandLine commandLine = new PicocliCommandLineBuilder(command)
                 .addStandardUsageHelpOption()
+                .setUsageHelpSynopsisAsCommandSynopsis()
+                .setUsageHelpDescriptionAsCommandDescription()
+                .addCustomUsageHelp()
                 .build();
 
         return commandLine.execute(command.getOriginalArguments());
