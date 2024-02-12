@@ -5,13 +5,19 @@ import picocli.CommandLine;
 
 public class CommandParser {
     public static Integer parse(Command command) {
-        CommandLine commandLine = new PicocliCommandLineBuilder(command)
+        PicocliCommandLineBuilder commandLineBuilder = new PicocliCommandLineBuilder(command)
                 .addStandardUsageHelpOption()
                 .setUsageHelpSynopsisAsCommandSynopsis()
                 .setUsageHelpDescriptionAsCommandDescription()
-                .addCustomUsageHelp()
-                .build();
+                .addCustomUsageHelp();
 
+        if (command.getVersion() != null) {
+            commandLineBuilder
+                    .setUsageHelpVersionAsCommandVersion()
+                    .addStandardVersionHelpOption();
+        }
+
+        CommandLine commandLine = commandLineBuilder.build();
         return commandLine.execute(command.getOriginalArguments());
     }
 }

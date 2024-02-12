@@ -23,13 +23,10 @@ public class PicocliCommandLineBuilder {
         return this;
     }
 
-    public PicocliCommandLineBuilder addStandardUsageHelpOption() {
-        commandSpec.addOption(OptionSpec
-                .builder("-h", "--help")
-                .description("Show this help message and exit.")
-                .usageHelp(true)
-                .build()
-        );
+    public PicocliCommandLineBuilder setUsageHelpVersionAsCommandVersion() {
+        if (command.getVersion() != null) {
+            commandSpec.version(command.getVersion());
+        }
         return this;
     }
 
@@ -44,6 +41,26 @@ public class PicocliCommandLineBuilder {
         if (command.getSynopsis() != null) {
             commandSpec.usageMessage().description(command.getSynopsis());
         }
+        return this;
+    }
+
+    public PicocliCommandLineBuilder addStandardUsageHelpOption() {
+        commandSpec.addOption(OptionSpec
+                .builder("-h", "--help")
+                .description("Show this help message and exit.")
+                .usageHelp(true)
+                .build()
+        );
+        return this;
+    }
+
+    public PicocliCommandLineBuilder addStandardVersionHelpOption() {
+        commandSpec.addOption(OptionSpec
+                .builder("-v", "--version")
+                .description("Print version information and exit.")
+                .versionHelp(true)
+                .build()
+        );
         return this;
     }
 
