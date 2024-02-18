@@ -13,6 +13,7 @@
         <module>_aggregated-test-report</module>
         <module>command</module>
         <module>filesystem</module>
+        <module>json</module>
         <module>logger</module>
     </modules>
 

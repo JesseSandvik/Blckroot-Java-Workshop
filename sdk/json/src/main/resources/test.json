@@ -1,0 +1,11 @@
+{
+  "data": {
+    "keyA": "valueA",
+    "keyB": [
+      {
+        "nestedKeyA": "nestedValueA",
+        "nestedKeyB": "nestedValueB"
+      }
+    ]
+  }
+}
